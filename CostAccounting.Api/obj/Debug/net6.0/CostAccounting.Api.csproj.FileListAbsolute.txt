@@ -60,3 +60,4 @@ D:\C#\CostAccounting\CostAccounting.Api\obj\Debug\net6.0\refint\CostAccounting.A
 D:\C#\CostAccounting\CostAccounting.Api\obj\Debug\net6.0\CostAccounting.Api.pdb
 D:\C#\CostAccounting\CostAccounting.Api\obj\Debug\net6.0\CostAccounting.Api.genruntimeconfig.cache
 D:\C#\CostAccounting\CostAccounting.Api\obj\Debug\net6.0\ref\CostAccounting.Api.dll
+D:\C#\CostAccounting\CostAccounting.Api\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

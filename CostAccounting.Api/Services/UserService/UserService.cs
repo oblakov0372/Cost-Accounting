@@ -1,6 +1,7 @@
 ﻿using CostAccounting.Api.Entities;
 using CostAccounting.Api.Models;
 using CostAccounting.Api.Repository;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -8,7 +9,7 @@ using System.Text;
 
 namespace CostAccounting.Api.Services.UserService
 {
-    public class UserService
+    public class UserService:IUserService
     {
         private readonly ProjectDbContext _context;
         private readonly IConfiguration _configuration;

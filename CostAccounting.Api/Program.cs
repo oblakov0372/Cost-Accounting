@@ -1,9 +1,13 @@
 using CostAccounting.Api.Repository;
+using CostAccounting.Api.Services.UserService;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
 
+#region Authentication Model
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -24,12 +28,17 @@ builder.Services.AddAuthentication(options =>
     };
 });
 builder.Services.AddAuthorization();
+#endregion
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+#region DependencyInjection
 builder.Services.AddScoped<ProjectDbContext>();
+builder.Services.AddScoped<IUserService, UserService>();
+#endregion
+
 
 var app = builder.Build();
 

@@ -1,4 +1,5 @@
 using CostAccounting.Api.Repository;
+using CostAccounting.Api.Services.CostService;
 using CostAccounting.Api.Services.UserService;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -37,6 +38,7 @@ builder.Services.AddSwaggerGen();
 #region DependencyInjection
 builder.Services.AddScoped<ProjectDbContext>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<ICostService, CostService>();
 #endregion
 
 

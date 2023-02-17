@@ -13,12 +13,12 @@ namespace CostAccounting.Api.Services.CategoryService
         {
             _context = context;
         }
-        public async Task<bool> CreateCategory(CategoryModel categoryModel, int userId)
+        public async Task<Category> CreateCategory(CategoryModel categoryModel, int userId)
         {
             Category item = await _context.Categories.Where(item => item.Name.Equals(categoryModel.Name)).FirstOrDefaultAsync();
             
             if (item != null)
-                return false;
+                return null;
 
             item = new Category()
             {
@@ -27,7 +27,7 @@ namespace CostAccounting.Api.Services.CategoryService
             };
             await _context.Categories.AddAsync(item);
             await _context.SaveChangesAsync();
-            return true;
+            return item;
         }
 
         public async Task<bool> DeleteCategory(int categoryId)

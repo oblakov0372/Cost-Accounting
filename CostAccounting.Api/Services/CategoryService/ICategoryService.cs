@@ -7,7 +7,7 @@ namespace CostAccounting.Api.Services.CategoryService
     {
         Task<List<Category>> GetCategories(int userId);
         Task<bool> UpdateCategory(int categoryId, CategoryModel categoryModel);
-        Task<bool> CreateCategory(CategoryModel categoryModel, int userId);
+        Task<Category> CreateCategory(CategoryModel categoryModel, int userId);
         Task<bool> DeleteCategory(int categoryId);
 
     }

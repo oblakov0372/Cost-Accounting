@@ -1,6 +1,7 @@
 ﻿using CostAccounting.Api.Entities;
 using CostAccounting.Api.Models;
 using CostAccounting.Api.Services.CategoryService;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,10 +9,11 @@ namespace CostAccounting.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CategoryController : BaseController
+    [Authorize]
+    public class CategoriesController : BaseController
     {
         private readonly ICategoryService _categoryService;
-        public CategoryController(ICategoryService categoryService)
+        public CategoriesController(ICategoryService categoryService)
         {
             _categoryService = categoryService;
         }
@@ -26,10 +28,10 @@ namespace CostAccounting.Api.Controllers
         public async Task<IActionResult>CreateCategory(CategoryModel model)
         {
             int userId = GetUserId();
-            bool result = await _categoryService.CreateCategory(model, userId);
+            Category result = await _categoryService.CreateCategory(model, userId);
 
-            if (result)
-                return Ok();
+            if (result != null)
+                return Ok(result);
 
             return BadRequest();
         }

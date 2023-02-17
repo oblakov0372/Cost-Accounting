@@ -1,0 +1,21 @@
+.header {
+  @apply flex items-center justify-between border-b text-white;
+
+  ul {
+    @apply flex items-center justify-between;
+
+    li {
+      @apply m-4 text-xl cursor-pointer font-medium;
+      transition: all ease-in-out 0.2s;
+      &:hover {
+        transform: translateY(-2px);
+      }
+    }
+    .logo {
+      @apply flex items-center justify-between;
+      img {
+        @apply mr-1;
+      }
+    }
+  }
+}

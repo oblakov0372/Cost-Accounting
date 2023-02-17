@@ -32,6 +32,19 @@ builder.Services.AddAuthentication(options =>
 builder.Services.AddAuthorization();
 #endregion
 
+#region CORS
+builder.Services.AddCors(options =>
+{
+    // this defines a CORS policy called "default"
+    options.AddPolicy("default", policy =>
+    {
+        policy.WithOrigins("http://127.0.0.1:5173")
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
+#endregion
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -53,6 +66,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors("default");
 
 app.UseAuthentication();
 app.UseAuthorization();

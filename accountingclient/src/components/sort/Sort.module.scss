@@ -1,0 +1,54 @@
+.sort {
+  position: relative;
+  svg {
+    cursor: pointer;
+  }
+  &__label {
+    display: flex;
+    align-items: center;
+
+    svg {
+      margin-right: 8px;
+    }
+
+    b {
+      margin-right: 8px;
+    }
+
+    span {
+      color: #5800ab;
+      border-bottom: 1px dashed #5800ab;
+      cursor: pointer;
+    }
+  }
+
+  &__popup {
+    position: absolute;
+    left: 0;
+    margin-top: 15px;
+    background-color: #5800ab;
+    border-radius: 10px;
+    z-index: 2;
+    overflow: hidden;
+    padding: 10px 0;
+    width: 160px;
+
+    ul {
+      overflow: hidden;
+      li {
+        padding: 12px 20px;
+        cursor: pointer;
+
+        &.active,
+        &:hover {
+          background: rgba(254, 95, 30, 0.05);
+        }
+
+        &.active {
+          font-weight: bold;
+          color: #5800ab;
+        }
+      }
+    }
+  }
+}

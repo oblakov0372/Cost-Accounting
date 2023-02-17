@@ -1,0 +1,39 @@
+.form {
+  text-align: center;
+  color: #fff;
+  .data {
+    text-align: center;
+    width: 70%;
+    margin: 20px;
+    display: flex;
+    justify-content: space-between;
+
+    input {
+      width: 60%;
+      border-radius: 5px;
+      background-color: rgb(75, 75, 75);
+    }
+  }
+  .send {
+    display: block;
+    margin: 0 auto;
+    border-radius: 10px;
+    padding: 5px 40px;
+    border: 2px solid rgb(75, 75, 75);
+    background-color: rgb(75, 75, 75);
+    transition: all ease-in-out 0.2s;
+    &:hover {
+      border-color: black;
+    }
+  }
+}
+
+.myCategories {
+  color: #fff;
+  h1 {
+    font-size: 1.5em;
+  }
+  li {
+    margin-top: 4px;
+  }
+}

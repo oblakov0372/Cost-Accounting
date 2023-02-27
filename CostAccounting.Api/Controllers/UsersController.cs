@@ -23,5 +23,16 @@ namespace CostAccounting.Api.Controllers
 
             return BadRequest(jwt);
         }
+
+        [HttpPost("Register")]
+        public async Task<IActionResult> Register([FromBody] RegisterModel model)
+        {
+            bool result = await _userService.Register(model);
+            if (result)
+                return Ok("User has been registered");
+
+            return BadRequest($"User with this email:{model.Email} or with this " +
+                              $"userName:{model.UserName} already registered");
+        }
     }
 }

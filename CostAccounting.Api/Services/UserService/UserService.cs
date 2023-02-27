@@ -9,7 +9,7 @@ using System.Text;
 
 namespace CostAccounting.Api.Services.UserService
 {
-    public class UserService:IUserService
+    public class UserService : IUserService
     {
         private readonly ProjectDbContext _context;
         private readonly IConfiguration _configuration;
@@ -60,5 +60,28 @@ namespace CostAccounting.Api.Services.UserService
                 SecurityAlgorithms.HmacSha512Signature)
             };
         }
+
+        public async Task<bool> Register(RegisterModel model)
+        {
+            User item = await _context.Users.Where(u => u.Email == model.Email || u.UserName == model.UserName).FirstOrDefaultAsync();
+
+            if (item != null)
+                return false;
+
+            item = new User()
+            {
+                UserName = model.UserName,
+                Email = model.Email,
+                Password = model.Password,
+                CreationTime = DateTime.Now
+            };
+
+            await _context.Users.AddAsync(item);
+            await _context.SaveChangesAsync();
+
+            return true;
+
+        }
+
     }
 }
